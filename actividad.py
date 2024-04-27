@@ -1,4 +1,5 @@
 import time,os
+import datetime
 user1 = None
 pass1 = None
 user2 = None
@@ -31,14 +32,37 @@ while True:
                             print("3. Salir")
                             try:
                                 opcion2 = int(input("ingrese una opcion\n"))
-                                if opcion2 > 0 and opcion2 < 4:
-                                    if opcion2 == 1:
-                                        print("Realizar llamada")
-                                    elif opcion2 == 2:
-                                        print("Enviar correo electronico")
-                                    elif opcion2 == 3:
-                                        print("Salir")
-                                        break
+                                if opcion2 == 1:
+                                    os.system("cls")
+                                    print("Realizar llamada")
+                                    numero = input("Por favor, ingresa el número de celular (debe comenzar con 9 y tener 9 dígitos): \n")
+                                    if len(numero) == 9 and numero.startswith('9'):
+                                        print(f"Llamando al número {numero}... " )
+                                        time.sleep(2)
+                                        print("presione tecla para cortar")
+                                        tecla = input()
+                                        print("llamada finalizada")
+                                    else:
+                                        print("El número ingresado no es válido. Debe comenzar con 9 y tener 9 dígitos.\n")
+
+                                elif opcion2 == 2:
+                                    os.system("cls")
+                                    print("Enviar correo electronico")
+                                    correo = input("ingrese correo\n")
+                                    while '@' not in correo:
+                                        correo = input("ingrese correo, recuerde formato con @\n")
+                                    mensaje = input("ingrese mensaje a enviar\n")
+                                    print(f"DE: {username}")
+                                    print(f"PARA: {correo}")
+                                    print(f"MENSAJE: \n {mensaje}")
+                                    time.sleep(4)
+                                    print("presione tecla para volver al menu")
+                                    tecla = input()
+                                elif opcion2 == 3:
+                                    os.system("cls")
+                                    print("Cerrando sesion...")
+                                    time.sleep(2)
+                                    break
                             except:
                                 print("opcion ingresada no existe")
                     else:
@@ -63,6 +87,7 @@ while True:
                         print("usuarios creados exitosamente")
                     
             elif opcion == 3:
+                os.system("cls")
                 print("3. Salir")
                 break
             else:
